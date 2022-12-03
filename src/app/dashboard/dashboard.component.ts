@@ -69,6 +69,12 @@ export class DashboardComponent implements OnInit {
       }
     })
   }
+
+
+  deleteAll(){
+    this.todoService.deleteTasks();
+    this.todoArr = this.todoService.getAllTasks();
+  }
   // console.log(idx)
   // deleteTasks() {   // clear all tasks
 

@@ -25,6 +25,7 @@ export class TodoService {
   }
 
   deleteTodo(index: number) {
+
     this.todos.splice(index, 1)
   }
 
@@ -84,7 +85,7 @@ taskKey = 'tasks'
 
   }
 
-  deleteTasks(task : Task) {  // clears all tasks
+  deleteTasks() {  // clears all tasks
 
     console.log(this.taskKey);
     localStorage.removeItem('tasks')
