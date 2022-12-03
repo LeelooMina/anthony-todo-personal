@@ -29,9 +29,12 @@ export class TodoService {
   }
 
 
+
+
+
   //========================================
 
-// taskKey = 'tasks'
+taskKey = 'tasks'
 
 
 
@@ -41,43 +44,53 @@ export class TodoService {
 
   // constructor(private http: HttpClient) {
     // this.serviceURL = 'http://localhost:3000/tasks';
+
+
+  addTask(task : Todo) {
+
+    let cache: Todo[] = [];
+
+    if(this.getAllTasks() === null){
+      cache.push(task);
+    }else{
+      cache = this.getAllTasks();
+      cache.push(task);
+    }
+
+    localStorage.setItem(this.taskKey, JSON.stringify(cache))
+
+    // return this.http.post<Task>(this.serviceURL,task);
   }
 
-  // addTask(task : Task) {
 
-  //   const cache: Task [] = this.getAllTasks()  //gets all the tasks
+  getAllTasks(): Todo[]  {
 
-  //   cache.push(task);
+    const cache = JSON.parse(localStorage.getItem(this.taskKey));
 
-  //   localStorage.setItem(this.taskKey, JSON.stringify(cache) )
+    // const allTasks = JSON.parse(cache)
 
-  //   // return this.http.post<Task>(this.serviceURL,task);
-  // }
+    return cache
 
+  }
 
-  // getAllTasks(): Task[]  {
+  deleteTask(task : Todo) {
 
-  //   const cache = localStorage.getItem(this.taskKey);
+    let tasks = this.getAllTasks();
 
-  //   const allTasks = JSON.parse(cache)
+    // tasks.splice()
 
-  //   return allTasks ?? []
-
-  // }
-
-  // deleteTask(task : Task) {
-  //   localStorage.removeItem(this.taskKey)
+    // localStorage.removeItem(this.taskKey)
 
 
-  // }
+  }
 
-  // deleteTasks(task : Task) {  // clears all tasks
+  deleteTasks(task : Task) {  // clears all tasks
 
-  //   console.log(this.taskKey);
-  //   localStorage.removeItem('tasks')
-  // }
+    console.log(this.taskKey);
+    localStorage.removeItem('tasks')
+  }
 
-
+}
 
 
 

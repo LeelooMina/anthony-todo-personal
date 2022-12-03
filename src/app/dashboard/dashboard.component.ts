@@ -28,15 +28,23 @@ export class DashboardComponent implements OnInit {
   constructor(private todoService: TodoService,  private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.todoArr = this.todoService.getAllTodos();
+    this.todoArr = this.todoService.getAllTasks();
    }
 
 
   addTodo(form: NgForm) {
 
-    this.todoService.addTodo( new Todo(form.value.text))
+    let thisTask: Todo = {
+      text: form.value.text,
+      completed: false
+    }
+
+    this.todoService.addTask(thisTask)
+
+    console.log(thisTask)
 
     form.reset()
+    this.todoArr = this.todoService.getAllTasks();
 
     }
 

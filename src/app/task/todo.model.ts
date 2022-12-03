@@ -1,8 +1,10 @@
 export class Todo {
 
- constructor(
-  public text: string,
-  public completed: boolean = false ) {}
+
+ text: string
+ completed: boolean = false
+
+}
 
 
   // id: number = 0;
@@ -10,7 +12,7 @@ export class Todo {
   // constructor(public name: string ) {
   //   this.name = name;
   // }
-}
+
 
 // name: string = '';
 // description: string = 'Lorem ipsum dolor sit amet.';
